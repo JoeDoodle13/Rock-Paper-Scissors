@@ -1,15 +1,27 @@
-const choices = ["Rock", "Paper", "Scissor"];
+const choices = ["rock", "paper", "scissors"];
 
-let mySelection = prompt("What would you like to throw? Rock, Paper, or Scissors?")
-function computerSelection(choice) {
-    return choice = "Paper";//choices[Math.floor(Math.random() * choices.length)];
+function mySelectFunc(choice) {
+    let mySelect = prompt("What would you like to throw? Rock, Paper, or Scissors?")
+    let isChoice = mySelect.toLowerCase() === ("rock" || "paper" || "scissors");
+
+    isChoice_Check(isChoice)
+    function isChoice_Check() {
+        if (isChoice !== true) {
+        mySelect = prompt('Hint: Throw "Rock", "Paper", or "Scissors"');
+        isChoice = mySelect.toLowerCase() === ("rock" || "paper" || "scissors");
+        isChoice_Check(isChoice);
+    }}
+    return choice = mySelect;
 }
-let result = mySelection.toLowerCase() === computerSelection().toLowerCase();
+console.log(mySelectFunc())
 
-console.log(`Computer threw ${computerSelection()}.`, `You threw ${mySelection}`);
-
-if (result) {
-    console.log("Draw, redo");
-} else {
-    console.log("Joe won")
-}
+/*
+isChoice_Check(isChoice);
+function isChoice_Check(isChoice) {
+    if (isChoice !== true) {
+        mySelect = 
+        isChoice_Check(mySelect) 
+    } else {
+    return mySelect;
+    }
+}*/
