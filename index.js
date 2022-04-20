@@ -19,17 +19,18 @@ mySelect = mySelectFunc();
 
 
 // random select for computer
-function compSelect(choice) {
-    return choice = "Paper";//choices[Math.floor(Math.random() * choices.length)];
+function compSelectFunc(choice) {
+    return choice = compChoices[Math.floor(Math.random() * compChoices.length)];
 }
-let result = mySelect === compSelect().toLowerCase();
-
-console.log(`Computer threw ${compSelect()}.`, `You threw ${mySelect}`);
+let compSelect = compSelectFunc().toLowerCase();
+let result = mySelect === compSelect;
+console.log(result)
+console.log(`Computer threw ${compSelect}.`, `You threw ${mySelect}`);
 
 if (result) {
     console.log("Draw, redo");
 } else {
-    result = '' + myChoices.indexOf(`${mySelect}`) + compChoices.indexOf(`${compSelect}`);
+    result = '' + compChoices.indexOf(`${compSelect}`) + myChoices.indexOf(`${mySelect}`);
 
     console.log(result)
 
