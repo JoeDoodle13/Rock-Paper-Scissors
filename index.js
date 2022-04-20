@@ -6,6 +6,7 @@ let compWinsTotal = 0;
 let myWinsTotal = 0;
 
 // propmts and checks users choice
+round()
 function round() {
     function mySelectFunc(choice) {
         let mySelect = prompt("What would you like to throw? Rock, Paper, or Scissors?")
@@ -34,8 +35,6 @@ function round() {
     if (result) {
         console.log("Draw, redo");
         alert("Draw, redo");
-        console.clear();
-        round();
     } else {
         result = '' + compChoices.indexOf(`${compSelect}`) + myChoices.indexOf(`${mySelect}`);
     }
@@ -47,29 +46,30 @@ function round() {
         if (compWins.includes(result) === true) {
             console.log(`${compWinner} beats ${myWinner}, the Computer wins`);
             compWinsTotal++;
+            console.log(compWinsTotal, myWinsTotal);
         } else if (myWins.includes(result) === true) {
             console.log(`${myWinner} beats ${compWinner}, the User wins`)
             myWinsTotal++;
+            console.log(compWinsTotal, myWinsTotal);
+        } else {
         }
     }
-
     switch (true) {
-        case (myWinsTotal === 2):
+        case (myWinsTotal === 2 && compWinsTotal ===2):
+            alert("Tie Breaker");
+            console.log("Tie Breaker")
+            round()
+            break;
+
+        case (myWinsTotal >= 2):
             console.log("Joe Wins");
             break;
         
-        case (compWinsTotal === 2):
+        case (compWinsTotal >= 2):
             console.log("Computer Wins");
             break;
 
         default:
             round()
     }
-};    
-
-round()
-
-    /*now, in this block, include the rules of the game;
-    rock beats scissors, scissors beat paper, paper beats rock
-    
-    smth like `${winners selection} beats ${losers selection}; ${winner} won`*/
+};   
