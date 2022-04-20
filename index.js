@@ -1,5 +1,7 @@
-const myChoices = ["rock", "paper", "scissors", "dynamite"];
 const compChoices = ["rock", "paper", "scissors"];
+const myChoices = ["rock", "paper", "scissors", "dynamite"];
+const compWin = ["02", "21", "10"];
+const myWin = ["20", "12", "01", "23", "13", "03"];
 
 // propmts and checks users choice
 function mySelectFunc(choice) {
@@ -24,22 +26,31 @@ function compSelectFunc(choice) {
 }
 let compSelect = compSelectFunc().toLowerCase();
 let result = mySelect === compSelect;
-console.log(result)
 console.log(`Computer threw ${compSelect}.`, `You threw ${mySelect}`);
 
 if (result) {
     console.log("Draw, redo");
 } else {
     result = '' + compChoices.indexOf(`${compSelect}`) + myChoices.indexOf(`${mySelect}`);
-
-    console.log(result)
-
 }
+
+winnerFunc(result)
+function winnerFunc() {
+    let compWinner = compSelect[0].toUpperCase() + compSelect.slice(1);
+    let myWinner = mySelect[0].toUpperCase() + mySelect.slice(1);
+    if (compWin.includes(result) === true) {
+        console.log(`${compWinner} beats ${myWinner}, the Computer wins`)
+    } else if (myWin.includes(result) === true) {
+        console.log(`${myWinner} beats ${compWinner}, the User wins`)
+    } else {
+        console.log("Error, try again");
+
+    }
+}
+
+
+    
     /*now, in this block, include the rules of the game;
     rock beats scissors, scissors beat paper, paper beats rock
     
     smth like `${winners selection} beats ${losers selection}; ${winner} won`*/
-
-    
-
-
